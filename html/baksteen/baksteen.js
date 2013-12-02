@@ -7,6 +7,7 @@ function Baksteen (_container) {
 		container.addEventListener("click", onClick, true);
 	}
 	onClick = function (_event) {
+		_event.preventDefault();
 		if (_event.target === container) {
 			var kiezeltje = new TekstKiezeltje(self, _event.clientX - container.offsetLeft, _event.clientY - container.offsetTop);
 			kiezelsteentjes.push(kiezeltje);
@@ -26,6 +27,7 @@ function Kiezeltje (_parent, _x, _y) {
 		parent = _parent,
 		x = _x,
 		y = _y,
+		doubleclick = false,
 		element, title, content;
 
 	init = function () {
@@ -39,6 +41,7 @@ function Kiezeltje (_parent, _x, _y) {
 
 		element.addEventListener("mouseover", onMouseOver, false);
 		element.addEventListener("mouseout", onMouseOut, false);
+		element.addEventListener("dblclick", onDoubleClick, false);
 	}
 	createTitle = function (_title) {
 		title = document.createElement("p");
@@ -53,10 +56,14 @@ function Kiezeltje (_parent, _x, _y) {
 	}
 	onMouseOver = function (_event) {
 		element.style.zIndex = 2;
+		element.style.backgroundColor = "#A0A0A0";
 	}
-
 	onMouseOut = function (_event) {
 		element.style.zIndex = 1;
+		element.style.backgroundColor = "";
+	}
+	onDoubleClick = function (_event) {
+		doubleclick = !doubleclick
 	}
 
 	init();
@@ -64,8 +71,6 @@ function Kiezeltje (_parent, _x, _y) {
 		element: element,
 		title: title,
 		content: content,
-		update: function () {
-		}
 	};
 }
 
@@ -74,8 +79,8 @@ function TekstKiezeltje( _parent, _x, _y) {
 		parent = _parent,
 		kiezeltje = Kiezeltje(_parent, _x, _y);
 
-	kiezeltje.title.innerHTML = '<input class="kiezeltje-title" type="text"/>';
-	kiezeltje.content.innerHTML = '<textarea class="kiezeltje-content"></textarea>';
+	//kiezeltje.title.innerHTML = '<input class="kiezeltje-title" type="text"/>';
+	//kiezeltje.content.innerHTML = '<textarea class="kiezeltje-content"></textarea>';
 
 	return kiezeltje;
 }
