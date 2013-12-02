@@ -16,8 +16,9 @@ body {
 }
 
 .kiezeltje-title {
-	width: 100%;
 	height: 20px;
+	left: 5px;
+	right: 5px;
 	background-color: #323232;
 	color: #CCCCCC;
 }
