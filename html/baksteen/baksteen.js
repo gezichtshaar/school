@@ -1,30 +1,40 @@
 function Baksteen (_container) {
 	var self = this,
 		container = _container,
-		kiezelsteentjes = [];
+		kiezelsteentjes = {};
 
 	init = function () {
 		container.addEventListener("click", onClick, true);
 	}
+	generateId = function () {
+		var id;
+		do {
+			id = "kiezel" + Math.random();
+		} while (id in kiezelsteentjes);
+		return id;
+	}
 	onClick = function (_event) {
 		_event.preventDefault();
 		if (_event.target === container) {
-			var kiezeltje = new TekstKiezeltje(self, _event.clientX - container.offsetLeft, _event.clientY - container.offsetTop);
-			kiezelsteentjes.push(kiezeltje);
-			container.appendChild(kiezeltje.element);
+			var id = generateId();
+			
+			kiezelsteentjes[id] = new TekstKiezeltje(self, id, _event.clientX - container.offsetLeft, _event.clientY - container.offsetTop);
+
+			container.appendChild(kiezelsteentjes[id].element);
 		}
 	}
 
-	this.removeKiezeltje = function (_n) {
-		container.removeChild(kiezelsteentjes[n]);
-		kiezelsteentjes.splice(_n, 1);
+	this.removeKiezeltje = function (_id) {
+		container.removeChild(kiezelsteentjes[_id].element);
+		delete kiezelsteentjes[_id];
 	}
 	init();
 }
 
-function Kiezeltje (_parent, _x, _y) {
+function Kiezeltje (_parent, _id, _x, _y) {
 	var self = this,
 		parent = _parent,
+		id = _id,
 		x = _x,
 		y = _y,
 		doubleclick = false,
@@ -63,7 +73,7 @@ function Kiezeltje (_parent, _x, _y) {
 		element.style.backgroundColor = "";
 	}
 	onDoubleClick = function (_event) {
-		doubleclick = !doubleclick
+		parent.removeKiezeltje(id);
 	}
 
 	init();
@@ -74,10 +84,11 @@ function Kiezeltje (_parent, _x, _y) {
 	};
 }
 
-function TekstKiezeltje( _parent, _x, _y) {
+function TekstKiezeltje(_parent, _id, _x, _y) {
 	var self = this,
 		parent = _parent,
-		kiezeltje = Kiezeltje(_parent, _x, _y);
+		num = _id,
+		kiezeltje = Kiezeltje(_parent, num, _x, _y);
 
 	//kiezeltje.title.innerHTML = '<input class="kiezeltje-title" type="text"/>';
 	//kiezeltje.content.innerHTML = '<textarea class="kiezeltje-content"></textarea>';
