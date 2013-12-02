@@ -86,8 +86,8 @@ function Kiezeltje (_parent, _id, _x, _y) {
 function TekstKiezeltje(_parent, _id, _x, _y) {
 	var self = this,
 		parent = _parent,
-		num = _id,
-		kiezeltje = Kiezeltje(_parent, num, _x, _y);
+		id = _id,
+		kiezeltje = Kiezeltje(_parent, id, _x, _y);
 
 	//kiezeltje.title.innerHTML = '<input class="kiezeltje-title" type="text"/>';
 	//kiezeltje.content.innerHTML = '<textarea class="kiezeltje-content"></textarea>';
