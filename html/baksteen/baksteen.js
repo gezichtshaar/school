@@ -7,7 +7,7 @@ function Baksteen (_container) {
 		container.addEventListener("click", onClick);
 	}
 	onClick = function (_event) {
-		var kiezeltje = new TekstKiezeltje(self, _event.clientX, _event.clientY);
+		var kiezeltje = new TekstKiezeltje(self, _event.clientX - container.offsetLeft, _event.clientY - container.offsetTop);
 		kiezelsteentjes.push(kiezeltje);
 		container.appendChild(kiezeltje.element);
 	}
@@ -20,7 +20,7 @@ function Baksteen (_container) {
 }
 
 function Kiezeltje (_parent, _x, _y) {
-	var self = _self,
+	var self = this,
 		parent = _parent,
 		x = _x,
 		y = _y,
@@ -29,8 +29,8 @@ function Kiezeltje (_parent, _x, _y) {
 	init = function () {
 		element = document.createElement("div");
 		element.className = "kiezeltje";
-		element.style.top = x;
-		element.style.left = y;
+		element.style.left = x;
+		element.style.top = y;
 	}
 
 	init();
@@ -51,9 +51,10 @@ function TekstKiezeltje( _parent, _x, _y) {
 function initBaksteen () {
 	var container = document.createElement("div");
 
-	new Baksteen(container);
-
+	container.className = "container";
 	document.body.appendChild(container);
+
+	new Baksteen(container);
 }
 
 function init () {
