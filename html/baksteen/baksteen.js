@@ -37,7 +37,6 @@ function Kiezeltje (_parent, _id, _x, _y) {
 		id = _id,
 		x = _x,
 		y = _y,
-		doubleclick = false,
 		element, title, content;
 
 	init = function () {
