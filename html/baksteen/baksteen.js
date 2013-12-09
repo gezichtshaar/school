@@ -50,7 +50,7 @@ function Kiezeltje (_parent, _id, _x, _y) {
 
 		element.addEventListener("mouseover", onMouseOver, false);
 		element.addEventListener("mouseout", onMouseOut, false);
-		element.addEventListener("dblclick", onDoubleClick, false);
+		element.addEventListener("dblclick", onDoubleClick, true);
 	}
 	createTitle = function (_title) {
 		title = document.createElement("p");
@@ -72,6 +72,7 @@ function Kiezeltje (_parent, _id, _x, _y) {
 		element.style.backgroundColor = "";
 	}
 	onDoubleClick = function (_event) {
+		_event.preventDefault();
 		parent.removeKiezeltje(id);
 	}
 
