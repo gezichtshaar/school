@@ -5,6 +5,9 @@ var romanTranslator = (function () {
 		var numbers = [];
 
 		for (var i = 0; i < _text.length; i++) {
+			if (!(_text[i] in translation)) {
+				return [];
+			}
 			numbers.push(translation[_text[i]]);
 		}
 		return numbers;
