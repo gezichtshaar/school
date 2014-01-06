@@ -8,7 +8,7 @@ var romanTranslator = (function () {
 			numbers.push(translation[_text[i]]);
 		}
 		return numbers;
-    	}
+	}
 
 	function toDec (_xs) {
 		var n = _xs.indexOf(Math.max.apply(Math, _xs));
