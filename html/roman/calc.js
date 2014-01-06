@@ -9,19 +9,13 @@ var romanTranslator = (function () {
 		}
 		return numbers;
 	}
-
 	function toDec (_xs) {
 		var n = _xs.indexOf(Math.max.apply(Math, _xs));
 		return _xs.length > 0 ? (_xs[n] - arguments.callee(_xs.slice(0, n)) + arguments.callee(_xs.slice(n + 1, _xs.length))) : 0;
 	}
-    
 	return {
 		romanToDec: function (_text) {
 			return toDec(transform(_text));
 		}
 	}
 })();
-
-function calcHelper() {
-	document.getElementById("bloot").innerHTML = romanTranslator.romanToDec(document.getElementById("blaat").value);
-}
