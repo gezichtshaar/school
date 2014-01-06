@@ -1,6 +1,11 @@
 <html>
     <head>
 	<script type="text/javascript" src="calc.js"></script>
+	<script type="text/javascript">
+		function calcHelper() {
+			document.getElementById("bloot").innerHTML = romanTranslator.romanToDec(document.getElementById("blaat").value);
+		}
+	</script>
     </head>
     <body>
 	<input type="text" id="blaat" value="MCMXCIX"/>
