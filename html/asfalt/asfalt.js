@@ -20,4 +20,8 @@ function doc (_dLen, _pLen, _sLen, _wLen) {
 	return _dLen > 0 ? (paragraph(_pLen, _sLen, _wLen) + arguments.callee(_dLen-1, _pLen, _sLen, _wLen)) : "\n";
 }
 
-console.log(doc(4, 10, 10, 8));
+function test() {
+	console.log(doc(4, 10, 10, 8));
+}
+
+test()
