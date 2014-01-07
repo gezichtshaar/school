@@ -1,0 +1,24 @@
+<html>
+    <head>
+	<script type="text/javascript">
+	    var url = "asfalt.js?",
+	        loc = document.head,
+	        elem;
+
+            function reload () {
+		loc.removeChild(elem);
+		load()
+	    }
+
+            function load () {
+		elem = document.createElement("script");
+		elem.src = url + Math.random();
+		loc.appendChild(elem);
+	    }
+
+            window.onload = load;
+	</script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,7 +1,11 @@
 var translations = "abcdefghijklmnopqrstuwvxyz".split("");
 
+function letter () {
+	return translations[Math.floor(Math.random() * translations.length)]; 
+}
+
 function word (_wLen) {
-	return _wLen > 0 ? (translations[Math.floor(Math.random() * translations.length)] + arguments.callee(_wLen-1)) : "";
+	return _wLen > 0 ? (letter() + arguments.callee(_wLen-1)) : "";
 }
 
 function sentence (_sLen, _wLen) {
