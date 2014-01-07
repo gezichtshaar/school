@@ -2,7 +2,7 @@ var romanTranslator = (function () {
 	var translation = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000};
 
 	function transform (_text) {
-		var numbers = []
+		var numbers = [],
 			text = _text.toUpperCase();
 
 		for (var i = 0; i < text.length; i++) {
