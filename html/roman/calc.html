@@ -3,7 +3,15 @@
 	<script type="text/javascript" src="calc.js"></script>
 	<script type="text/javascript">
 		function calcHelper() {
-			document.getElementById("bloot").innerHTML = romanTranslator.romanToDec(document.getElementById("blaat").value);
+			var result = romanTranslator.romanToDec(document.getElementById("blaat").value),
+			    msg;
+
+			if (result > 0) {
+				msg = "Het antwoord is: " + result;
+			}else{
+				msg = "Incorrecte invoer";
+			}
+			document.getElementById("bloot").innerHTML = msg;
 		}
 	</script>
     </head>
